@@ -1,3 +1,6 @@
+using CandidateRecordSystem.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+
 namespace CandidateRecordSystem
 {
     public class Program
@@ -12,7 +15,9 @@ namespace CandidateRecordSystem
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
+            builder.Services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlite(builder.Configuration.GetConnectionString("SqliteDb")
+            ));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
