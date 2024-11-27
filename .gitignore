@@ -396,3 +396,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/CandidateRecordSystem/CandidateRecordSystem/LocalDatabase.db
+/CandidateRecordSystem/CandidateRecordSystem/LocalDatabase.db-shm
+/CandidateRecordSystem/CandidateRecordSystem/LocalDatabase.db-wal
