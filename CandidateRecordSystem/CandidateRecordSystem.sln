@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CandidateRecordSystem", "CandidateRecordSystem\CandidateRecordSystem.csproj", "{F09AEC14-1050-400D-BFE6-720D027071E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CandidateRecordSystem.WebApi", "CandidateRecordSystem\CandidateRecordSystem.WebApi.csproj", "{F09AEC14-1050-400D-BFE6-720D027071E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CandidateRecordSystem.Tests", "CandidateRecordSystem.Tests\CandidateRecordSystem.Tests.csproj", "{BFBF46AD-3AB5-4D5B-BE4B-6DC98BED5D35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CandidateRecordSystem.Tests", "CandidateRecordSystem.Tests\CandidateRecordSystem.Tests.csproj", "{BFBF46AD-3AB5-4D5B-BE4B-6DC98BED5D35}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
