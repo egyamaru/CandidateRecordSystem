@@ -7,14 +7,6 @@
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<NoWarn>$(NoWarn);1591</NoWarn>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <Compile Remove="sqlite\**" />
-	  <Content Remove="sqlite\**" />
-	  <EmbeddedResource Remove="sqlite\**" />
-	  <None Remove="sqlite\**" />
-	</ItemGroup>
-
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.36" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.36" />
