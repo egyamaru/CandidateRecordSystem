@@ -41,11 +41,14 @@ namespace CandidateRecordSystem.Infrastructure
                 .Property(c => c.Comments)
                 .IsRequired();
 
-            //create index email for efficient lookup by email
-            //assumption: first name and last name are not unique, searches are more likely with emails which are unique
+            //unique index on Email
             modelBuilder.Entity<Candidate>()
                 .HasIndex(c => c.Email)
                 .IsUnique();
+
+            //create a composite index on FirstName, LastName
+            modelBuilder.Entity<Candidate>()
+                .HasIndex(c => new { c.FirstName, c.LastName });
         }
     }
 }
