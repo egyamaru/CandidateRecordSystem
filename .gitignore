@@ -399,3 +399,4 @@ FodyWeavers.xsd
 /CandidateRecordSystem/CandidateRecordSystem/LocalDatabase.db
 /CandidateRecordSystem/CandidateRecordSystem/LocalDatabase.db-shm
 /CandidateRecordSystem/CandidateRecordSystem/LocalDatabase.db-wal
+/CandidateRecordSystem/CandidateRecordSystem/sqlite
