@@ -1,4 +1,5 @@
 using CandidateRecordSystem.Core.Interfaces;
+using CandidateRecordSystem.Helpers;
 using CandidateRecordSystem.Infrastructure;
 using CandidateRecordSystem.Infrastructure.Repositories;
 using CandidateRecordSystem.Services;
@@ -32,6 +33,8 @@ namespace CandidateRecordSystem
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
+                MigrationHelper.ApplyMigrations(app);
+
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
