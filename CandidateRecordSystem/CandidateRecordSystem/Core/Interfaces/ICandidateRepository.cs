@@ -4,6 +4,8 @@ namespace CandidateRecordSystem.Core.Interfaces
 {
     public interface ICandidateRepository
     {
-        Task<Candidate> InsertOrUpdate(Candidate candidate);
+        Task<Candidate> GetByEmailAsync(string email);
+        Task<Candidate> InsertAsync(Candidate candidate);
+        Task<Candidate> UpdateAsync(Candidate candidate);
     }
 }

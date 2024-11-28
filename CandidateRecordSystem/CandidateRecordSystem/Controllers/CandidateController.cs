@@ -1,4 +1,5 @@
 ﻿using CandidateRecordSystem.Core.Entities;
+using CandidateRecordSystem.Enums;
 using CandidateRecordSystem.Services;
 using CandidateRecordSystem.Services.Dtos;
 using CandidateRecordSystem.Services.Mappings;
@@ -34,12 +35,15 @@ namespace CandidateRecordSystem.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(500)]
         [Produces("application/json")]
-        public async Task<IActionResult> Upsert([FromBody] CandidateUpsertDto candidateDto)
+        public async Task<IActionResult> UpsertAsync([FromBody] CandidateUpsertDto candidateDto)
         {
             try
             {
-                var upsertedCandidate = await _candidateService.InsertOrUpdateCandidate(candidateDto.ToCandidate());
-                return Ok(upsertedCandidate.ToCandidateUpsertResponseDto()); //simpling returing HTTP 200 here. We could return 201 for inserts and 200 for updates.
+                (Operation operation, CandidateUpsertResponseDto candidateUpsertResponseDto) upsertResult = await _candidateService.InsertOrUpdateCandidateAsync(candidateDto);
+                if(upsertResult.operation==Operation.Insert)
+                    return Created($"/candidate/{upsertResult.candidateUpsertResponseDto.CandidateId}", upsertResult.candidateUpsertResponseDto); //dummy url for now /candidate/{candidateId}
+                else
+                    return Ok(upsertResult.candidateUpsertResponseDto);
             }
             catch (Exception ex)
             {

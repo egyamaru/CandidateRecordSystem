@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CandidateRecordSystem.Infrastructure.Repositories
 {
-    public class CandidateRepository:ICandidateRepository
+    public class CandidateRepository : ICandidateRepository
     {
         private readonly AppDbContext _appDbContext;
 
@@ -13,33 +13,25 @@ namespace CandidateRecordSystem.Infrastructure.Repositories
             _appDbContext = appDbContext;
         }
 
-        public async Task<Candidate> InsertOrUpdate(Candidate candidate)
+        public async Task<Candidate> InsertAsync(Candidate candidate)
         {
 
-            var existingCandidate= await _appDbContext.Candidate.FirstOrDefaultAsync(c=>c.Email == candidate.Email);
-
-            if( existingCandidate is null)
-            {
-                //insert
-                await _appDbContext.AddAsync(candidate);
-                await _appDbContext.SaveChangesAsync();
-            }
-            else
-            {
-                //update
-                existingCandidate.PhoneNumber = candidate.PhoneNumber;
-                existingCandidate.FirstName = candidate.FirstName;
-                existingCandidate.LastName = candidate.LastName;
-                existingCandidate.Email = candidate.Email;
-                existingCandidate.Comments = candidate.Comments;
-                existingCandidate.GithubUrl = candidate.GithubUrl;
-                existingCandidate.LinkedInProfileUrl = candidate.LinkedInProfileUrl;
-
-                await _appDbContext.SaveChangesAsync();
-                candidate.CandidateId = existingCandidate.CandidateId;
-            }
-            
+            _appDbContext.Add(candidate);
+            await _appDbContext.SaveChangesAsync();
             return candidate;
+        }
+
+        public async Task<Candidate> UpdateAsync(Candidate candidate)
+        {
+
+            _appDbContext.Update(candidate);
+            await _appDbContext.SaveChangesAsync();
+            return candidate;
+        }
+
+        public async Task<Candidate> GetByEmailAsync(string email)
+        {
+            return await _appDbContext.Candidate.AsNoTracking().FirstOrDefaultAsync(c => c.Email == email);
         }
     }
 }
