@@ -37,7 +37,7 @@ namespace CandidateRecordSystem.Tests.Tests
                 GithubUrl = "https://github.com/garryharry",
                 LinkedInProfileUrl = "https://linkedin.com/garryharry",
                 PhoneNumber = "+9779812345678",
-                PreferredTimeToCall = "09:30"
+                PreferredTimeToCall = "9AM - 11AM"
             };
 
             var candidate = new Candidate
@@ -50,7 +50,7 @@ namespace CandidateRecordSystem.Tests.Tests
                 GithubUrl = "https://github.com/garryharry",
                 LinkedInProfileUrl = "https://linkedin.com/garryharry",
                 PhoneNumber = "+9779812345678",
-                PreferredTimeToCall = TimeOnly.FromDateTime(DateTime.Now)
+                PreferredTimeToCall = "9AM - 11AM"
             };
 
             _mockCandidateRepository.Setup(s => s.GetByEmailAsync(candidateUpsertDto.Email)).ReturnsAsync((Candidate)null);
@@ -72,7 +72,7 @@ namespace CandidateRecordSystem.Tests.Tests
         [TestMethod]
         public async Task InsertOrUpsertCandidate_Update_WhenExists()
         {
-            var preferedCallingTime= TimeOnly.FromDateTime(DateTime.Now);
+            var preferedCallingTime= "9AM - 11AM";
             var candidateUpsertDto = new CandidateUpsertDto
             {
                 FirstName = "Harry",

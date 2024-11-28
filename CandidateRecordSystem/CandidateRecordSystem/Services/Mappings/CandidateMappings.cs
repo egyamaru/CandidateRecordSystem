@@ -12,7 +12,7 @@ namespace CandidateRecordSystem.Services.Mappings
             GithubUrl = candidateUpsertDto.GithubUrl,
             LinkedInProfileUrl = candidateUpsertDto.LinkedInProfileUrl,
             Comments = candidateUpsertDto.Comments,
-            PreferredTimeToCall = candidateUpsertDto.PreferredTimeToCall is null ? null : TimeOnly.Parse(candidateUpsertDto.PreferredTimeToCall),
+            PreferredTimeToCall = candidateUpsertDto.PreferredTimeToCall,
             PhoneNumber = candidateUpsertDto.PhoneNumber,
             Email = candidateUpsertDto.Email
         };
@@ -24,7 +24,7 @@ namespace CandidateRecordSystem.Services.Mappings
             GithubUrl = candidate.GithubUrl,
             LinkedInProfileUrl = candidate.LinkedInProfileUrl,
             Comments = candidate.Comments,
-            PreferredTimeToCall = candidate.PreferredTimeToCall is null ? null : candidate.PreferredTimeToCall.ToString(),
+            PreferredTimeToCall = candidate.PreferredTimeToCall,
             PhoneNumber = candidate.PhoneNumber,
             CandidateId = candidate.CandidateId,
             Email = candidate.Email

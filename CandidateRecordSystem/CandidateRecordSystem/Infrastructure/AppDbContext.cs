@@ -34,8 +34,7 @@ namespace CandidateRecordSystem.Infrastructure
                 .HasMaxLength(50); ;
 
             modelBuilder.Entity<Candidate>()
-                .Property(c => c.PreferredTimeToCall)
-                .HasColumnType("TIME");
+                .Property(c => c.PreferredTimeToCall);
 
             modelBuilder.Entity<Candidate>()
                 .Property(c => c.Comments)
